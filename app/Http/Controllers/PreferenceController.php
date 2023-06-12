@@ -25,7 +25,13 @@ class PreferenceController extends Controller
             'back_image' => $urlBackImage,
             'open_sunday' => $request->open_sunday,
             'open_saturday' => $request->open_saturday,
-            'open_monday' => $request->open_monday
+            'open_monday' => $request->open_monday,
+            'close_sunday' => $request->close_sunday,
+            'close_saturday' => $request->close_saturday,
+            'close_monday' => $request->close_monday,
+            'facebook_link' => $request->facebook_link,
+            'instagram_link' => $request->instagram_link,
+            'whatsapp_link' => $request->whatsapp_link
         ]);
 
         return redirect()->route('admin');
@@ -81,19 +87,37 @@ class PreferenceController extends Controller
                 'location' => $request->location
             ]);
         }
-        if($request->open_sunday){
+        if($request->open_sunday && $request->close_sunday){
             $preference->update([
-                'open_sunday' => $request->open_sunday
+                'open_sunday' => $request->open_sunday,
+                'close_sunday' => $request->close_sunday
             ]);
         }
-        if($request->open_saturday){
+        if($request->open_saturday && $request->close_saturday){
             $preference->update([
-                'open_saturday' => $request->open_saturday
+                'open_saturday' => $request->open_saturday,
+                'close_saturday' => $request->close_saturday
             ]);
         }
-        if($request->open_monday){
+        if($request->open_monday && $request->close_monday){
             $preference->update([
-                'open_monday' => $request->open_monday
+                'open_monday' => $request->open_monday,
+                'close_monday' => $request->close_monday
+            ]);
+        }
+        if($request->facebook_link){
+            $preference->update([
+                'facebook_link' => $request->facebook_link
+            ]);
+        }
+        if($request->instagram_link){
+            $preference->update([
+                'instagram_link' => $request->instagram_link
+            ]);
+        }
+        if($request->whatsapp_link){
+            $preference->update([
+                'whatsapp_link' => $request->whatsapp_link
             ]);
         }
 

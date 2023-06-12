@@ -31,9 +31,15 @@ class PreferenceRequest extends FormRequest
             'location' => 'required_unless:form_type,edit',
             'cover_image' => 'required_unless:form_type,edit|image|mimes:png,jpg,jpeg,svg',
             'back_image' => 'required_unless:form_type,edit|image|mimes:png,jpg,jpeg,svg',
-            'open_sunday' => 'required_unless:form_type,edit',
-            'open_saturday' => 'required_unless:form_type,edit',
-            'open_monday' => 'required_unless:form_type,edit'
+            'open_sunday' => 'required_unless:form_type,edit|before:close_sunday',
+            'open_saturday' => 'required_unless:form_type,edit|before:close_saturday',
+            'open_monday' => 'required_unless:form_type,edit|before:close_monday',
+            'close_sunday' => 'required_unless:form_type,edit',
+            'close_saturday' => 'required_unless:form_type,edit',
+            'close_monday' => 'required_unless:form_type,edit',
+            'facebook_link' => 'required_unless:form_type,edit',
+            'instagram_link' => 'required_unless:form_type,edit',
+            'whatsapp_link' => 'required_unless:form_type,edit',
         ];
     }
 }

@@ -73,7 +73,7 @@
 				<a href="#gallery" class="smoothScroll btn btn-default">LEARN MORE</a>
 			</div>
 		</div>
-	</div>		
+	</div>
 </section>
 
 
@@ -106,7 +106,7 @@
 										@if (!$loop->last)
 											{{ $ingredient->name }}
 											/
-										@else	
+										@else
 											{{ $ingredient->name }}
 										@endif
 									@endforeach
@@ -120,7 +120,7 @@
 										@if (!$loop->last)
 											{{ $ingredient->name }}
 											/
-										@else	
+										@else
 											{{ $ingredient->name }}
 										@endif
 									@endforeach
@@ -141,7 +141,7 @@
 										@if (!$loop->last)
 											{{ $ingredient->name }}
 											/
-										@else	
+										@else
 											{{ $ingredient->name }}
 										@endif
 									@endforeach
@@ -154,7 +154,7 @@
 					@endphp
 				@endforeach
 
-			@else	
+			@else
 				<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
 					<a href="{{ asset('images/gallery-img1.jpg') }}" data-lightbox-gallery="zenda-gallery"><img src="{{ asset('images/gallery-img1.jpg') }}" alt="gallery img"></a>
 					<div>
@@ -216,7 +216,7 @@
 									@if (!$loop->last)
 										{{ $ingredient->name }}
 										/
-									@else	
+									@else
 										{{ $ingredient->name }}
 									@endif
 								@endforeach
@@ -260,7 +260,7 @@
 			@endif
 		</div>
 	</div>
-</section>		
+</section>
 
 
 <!-- place section -->
@@ -313,10 +313,10 @@
 				<form action="#" method="post">
 					<div class="col-md-6 col-sm-6">
 						<input name="name" type="text" class="form-control" id="name" placeholder="Name">
-				  </div>
+                    </div>
 					<div class="col-md-6 col-sm-6">
 						<input name="email" type="email" class="form-control" id="email" placeholder="Email">
-				  </div>
+                    </div>
 					<div class="col-md-12 col-sm-12">
 						<textarea name="message" rows="8" class="form-control" id="message" placeholder="Message"></textarea>
 					</div>
@@ -351,9 +351,9 @@
 				</div>
 				<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
 					<h2 class="heading">Open Hours</h2>
-						<p>Sunday <span>{{ $preference->open_sunday }}</span></p>
-						<p>Mon-Fri <span>{{ $preference->open_monday }}</span></p>
-						<p>Saturday <span>{{ $preference->open_saturday }}</span></p>
+						<p>Sunday <span>{{ $preference->open_sunday." - ".$preference->close_sunday }}</span></p>
+						<p>Mon-Fri <span>{{ $preference->open_monday." - ".$preference->close_monday }}</span></p>
+						<p>Saturday <span>{{ $preference->open_saturday." - ".$preference->close_saturday }}</span></p>
 				</div>
 			@else
 				<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
@@ -374,16 +374,29 @@
 						<p>Saturday <span>11:30 AM - 10:00 PM</span></p>
 				</div>
 			@endif
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
-				<h2 class="heading">Follow Us</h2>
-				<ul class="social-icon">
-					<li><a href="#" class="fa fa-facebook wow bounceIn" data-wow-delay="0.3s"></a></li>
-					<li><a href="#" class="fa fa-twitter wow bounceIn" data-wow-delay="0.6s"></a></li>
-					<li><a href="#" class="fa fa-instagram wow bounceIn" data-wow-delay="0.9s"></a></li>
-					{{-- <li><a href="#" class="fa fa-behance wow bounceIn" data-wow-delay="0.9s"></a></li> --}}
-					{{-- <li><a href="#" class="fa fa-github wow bounceIn" data-wow-delay="0.9s"></a></li> --}}
-				</ul>
-			</div>
+            @if ($preference)
+                <div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
+                    <h2 class="heading">Follow Us</h2>
+                    <ul class="social-icon">
+                        <li><a href="{{ $preference->facebook_link }}" class="fa fa-facebook wow bounceIn" data-wow-delay="0.3s"></a></li>
+                        <li><a href="{{ $preference->instagram_link }}" class="fa fa-whatsapp wow bounceIn" data-wow-delay="0.6s"></a></li>
+                        <li><a href="{{ $preference->whatsapp_link }}" class="fa fa-instagram wow bounceIn" data-wow-delay="0.9s"></a></li>
+                        {{-- <li><a href="#" class="fa fa-behance wow bounceIn" data-wow-delay="0.9s"></a></li> --}}
+                        {{-- <li><a href="#" class="fa fa-github wow bounceIn" data-wow-delay="0.9s"></a></li> --}}
+                    </ul>
+                </div>
+            @else
+                <div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
+                    <h2 class="heading">Follow Us</h2>
+                    <ul class="social-icon">
+                        <li><a href="#" class="fa fa-facebook wow bounceIn" data-wow-delay="0.3s"></a></li>
+                        <li><a href="#" class="fa fa-whatsapp wow bounceIn" data-wow-delay="0.6s"></a></li>
+                        <li><a href="#" class="fa fa-instagram wow bounceIn" data-wow-delay="0.9s"></a></li>
+                        {{-- <li><a href="#" class="fa fa-behance wow bounceIn" data-wow-delay="0.9s"></a></li> --}}
+                        {{-- <li><a href="#" class="fa fa-github wow bounceIn" data-wow-delay="0.9s"></a></li> --}}
+                    </ul>
+                </div>
+            @endif
 		</div>
 	</div>
 </footer>
@@ -396,12 +409,12 @@
 			<div class="col-md-12 col-sm-12">
 				@if ($preference)
 					<h3>{{ $preference->name }}</h3>
-					<p>Copyright © {{ $preference->name }} Restaurant 
+					<p>Copyright © {{ $preference->name }} Restaurant
 						| Design: <a rel="nofollow" href="http://github.com/Lacho06" target="_parent">Lacho06dev</a></p>
 				@else
 					<h3>ZENTRO</h3>
-					<p>Copyright © Zentro Restaurant and Cafe 
-					
+					<p>Copyright © Zentro Restaurant and Cafe
+
 					| Design: <a rel="nofollow" href="http://github.com/Lacho06" target="_parent">Lacho06dev</a></p>
 				@endif
 			</div>
@@ -409,7 +422,7 @@
 	</div>
 </section>
 
-<!-- JAVASCRIPT JS FILES -->	
+<!-- JAVASCRIPT JS FILES -->
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery.parallax.js') }}"></script>

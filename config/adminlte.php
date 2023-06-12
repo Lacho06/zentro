@@ -314,7 +314,7 @@ return [
         [
             'text'        => 'Dashboard',
             'route'         => 'admin',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fa fa-dashboard',
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
@@ -322,7 +322,7 @@ return [
         [
             'text' => 'Foods',
             'route'  => 'food.index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-hamburger',
         ],
         [
             'text' => 'Ingredients',
@@ -332,12 +332,12 @@ return [
         [
             'text' => 'Menu',
             'route'  => 'menu.index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-bread-slice',
         ],
         [
             'text' => 'Place',
             'route'  => 'place.index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fa fa-map-marker',
         ],
         // [
         //     'text'    => 'multilevel',
@@ -431,7 +431,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -522,6 +522,26 @@ return [
                     'type' => 'js',
                     'asset' => true,
                     'location' => 'vendor/bootstrap-switch/js/bootstrap-switch.min.js',
+                ],
+            ],
+        ],
+        'TempusDominusBs4' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
                 ],
             ],
         ],

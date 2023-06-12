@@ -25,6 +25,12 @@ return new class extends Migration
             $table->string('open_sunday')->nullable();
             $table->string('open_saturday')->nullable();
             $table->string('open_monday')->nullable();
+            $table->string('close_sunday')->nullable();
+            $table->string('close_saturday')->nullable();
+            $table->string('close_monday')->nullable();
+            $table->string('facebook_link')->nullable();
+            $table->string('whatsapp_link')->nullable();
+            $table->string('instagram_link')->nullable();
             $table->timestamps();
         });
     }
